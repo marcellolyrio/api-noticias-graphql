@@ -1,0 +1,26 @@
+type News{
+    _id: ID!
+    title: String!
+    mesage: String!
+    author: User!
+    active: Boolean!
+}
+
+input NewsInput{
+    title: String!   
+    mesage: String!
+    author: ID!
+    active: Boolean!
+}
+
+type Query{
+    news: [News]!
+    newsById(id: ID!): News!
+}
+
+type Mutation{
+    createNews(data: NewsInput): News!
+    updateNews(id: ID!, data: NewsInput): News!
+    deleteNews(id: ID!): Boolean
+    deleteNewsForAuthor(author: ID!): Boolean
+}
