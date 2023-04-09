@@ -6,7 +6,16 @@ function startServer({typeDefs, resolvers}){
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
-    const server = new ApolloServer({typeDefs, resolvers});
+    const server = new ApolloServer({
+        typeDefs, 
+        resolvers,
+        formatError: (err) => {
+            if(err.message.startsWith('Error:')){
+                return new Error(err.message)
+            }
+
+        }
+    });
     server.listen().then(({ url }) => console.log(`Server started at ${url}`));
 }
 

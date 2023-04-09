@@ -1,14 +1,14 @@
 type News{
     _id: ID!
     title: String!
-    mesage: String!
+    description: String!
     author: User!
     active: Boolean!
 }
 
 input NewsInput{
     title: String!   
-    mesage: String!
+    description: String!
     author: ID!
     active: Boolean!
 }
